@@ -1,0 +1,43 @@
+.App {
+  text-align: center;
+  scroll-behavior: smooth;
+}
+
+.App-header {
+  background-color: #006d5b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-header > p {
+  font-size: 18px;
+}
+
+p.miniheader {
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 14px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+p.miniheader > span {
+  display: inline-block;
+  transform: translateY(-35%);
+  padding-left: 5px;
+}
+
+form {
+  width: 60%;
+  border-radius: 10px;
+  background-color: white;
+  padding: 30px 0;
+  color: black;
+  margin-bottom: 30px;
+}
