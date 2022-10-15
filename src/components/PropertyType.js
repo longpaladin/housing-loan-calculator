@@ -14,8 +14,8 @@ export function PropertyType({
   calculateAttempt,
 }) {
   return (
-    <div>
-      <FormControl sx={{ m: 2, width: "50%" }}>
+    
+      <FormControl sx={{ m: 2, width: "90%", maxWidth: "500px" }}>
         <InputLabel id="property-type">Property Type</InputLabel>
         <Select
           labelId="property-type"
@@ -36,6 +36,6 @@ export function PropertyType({
             <FormHelperText error>Choose your property type</FormHelperText>
           )}
       </FormControl>
-    </div>
+    
   );
 }

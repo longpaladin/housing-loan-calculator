@@ -105,7 +105,6 @@ Calculate (button):
 Reset (button):
 
 - clears all the input fields to 0 or nothing
-- refreshes the page?
 
 ## Bugs present
 
@@ -116,12 +115,11 @@ Reset (button):
 - find ways (library) to put commas in the big numbers in input fields
 - header split left and right
 - refactor code if possible
-- useEffects for some of the code?
-- button to link to CPF calculator
-- layout of app, responsive design, flexbox or grid in MUI
 
 ## Completed fine tunes & extra features:
 
+- button to link to CPF calculator
+- layout of app, responsive design, flexbox or grid in MUI
 - remove magic numbers
 - add in comments on how the app works
 - Graph to visualise repayments over the years, using Chartjs library

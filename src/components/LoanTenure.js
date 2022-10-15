@@ -4,6 +4,7 @@ import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
+import TextField from "@mui/material/TextField";
 
 const MIN_LOAN_TENURE_YEARS = 1;
 const MAX_LOAN_TENURE_YEARS = 30;
@@ -19,12 +20,15 @@ export function LoanTenure({
 
   return (
     <div>
-      <FormControl sx={{ m: 2, width: "50%" }} variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-interestrate">
+      <FormControl
+        sx={{ m: 2, width: "90%", maxWidth: "500px" }}
+        variant="outlined"
+      >
+        <InputLabel htmlFor="outlined-adornment-loantenure">
           Loan Tenure
         </InputLabel>
         <OutlinedInput
-          id="outlined-adornment-interestrate"
+          id="outlined-adornment-loantenure"
           value={loanTenure}
           onChange={handleLoanTenureChange}
           endAdornment={<InputAdornment position="end">years</InputAdornment>}

@@ -8,8 +8,9 @@ import { ResetButton } from "./ResetButton";
 import Stack from "@mui/material/Stack";
 import { RepaymentTable } from "./RepaymentTable";
 import { ChartTable } from "./ChartTable";
-
-
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
 
 export function LoanForm() {
   // Set the states for different input fields
@@ -126,16 +127,19 @@ export function LoanForm() {
         loanTenure={loanTenure}
         calculateAttempt={calculateAttempt}
       />
-      <Stack
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        spacing={2}
-        padding="30px"
-      >
-        <CalculateButton handleClickCalculate={handleClickCalculate} />
-        <ResetButton resetAll={resetAll} />
-      </Stack>
+      
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
+          <Grid item lg={2} md={1}></Grid>
+          <Grid item lg={6} md={7} xs={12}>
+            <CalculateButton handleClickCalculate={handleClickCalculate} />
+          </Grid>
+          <Grid item lg={2} md={3} xs={12}>
+            <ResetButton resetAll={resetAll} />
+          </Grid>
+          <Grid item lg={2} md={1}></Grid>
+        </Grid>
+      </Box>
       {calculateAttempt && !validateAll && (
         <h4 style={{ color: "red" }}>
           Ensure all input fields are filled correctly

@@ -10,12 +10,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#006d5b",
   },
   title: {
+    fontFamily: "Helvetica-Bold",
     paddingTop: "20px",
     color: "white",
     fontSize: "28px",
     textAlign: "center",
   },
   info: {
+    fontFamily: "Helvetica-Bold",
     borderRadius: "10px",
     backgroundColor: "white",
     padding: "20px",
@@ -23,6 +25,8 @@ const styles = StyleSheet.create({
     fontSize: "12px",
   },
   table: {
+    textAlign: "center",
+    fontFamily: "Helvetica",
     margin: "20px",
   },
   tablehead: {

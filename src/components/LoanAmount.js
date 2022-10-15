@@ -19,7 +19,10 @@ export function LoanAmount({
 
   return (
     <div>
-      <FormControl sx={{ m: 2, width: "50%" }} variant="outlined">
+      <FormControl
+        sx={{ m: 2, width: "90%", maxWidth: "500px" }}
+        variant="outlined"
+      >
         <InputLabel htmlFor="outlined-adornment-loanamount">
           Loan Amount
         </InputLabel>

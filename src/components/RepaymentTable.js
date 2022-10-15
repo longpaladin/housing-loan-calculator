@@ -11,6 +11,7 @@ import { HousingLoanPDF } from "./HousingLoanPDF";
 import { PDFDownloadLink, Document, Page } from "@react-pdf/renderer";
 import { Button } from "@mui/material";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import { CPFCalculatorButton } from "./CPFCalculatorButton";
 
 const columns = [
   { id: "year", label: "Year", minWidth: 80, align: "right" },
@@ -90,12 +91,15 @@ export function RepaymentTable({
 
   return (
     <>
-      <p style={{ fontSize: "24px" }}>
+      <br></br>
+      <hr></hr>
+      <p style={{ fontFamily: "Helvetica", fontSize: "20px" }}>
         Your estimated monthly repayment: &nbsp;
-        <span style={{ fontSize: "60px", fontWeight: "bold" }}>
+        <span style={{ fontSize: "32px", fontWeight: "bold" }}>
           SGD$ {parseInt(monthlyRepayment)}
         </span>
       </p>
+      <hr></hr>
 
       <ChartTable
         yearOnlyArray={yearOnlyArray}
@@ -177,7 +181,7 @@ export function RepaymentTable({
         >
           {({ blob, url, loading, error }) =>
             loading ? (
-              "Loading document..."
+              <p>Error loading PDF</p>
             ) : (
               <Button variant="contained" size="large">
                 Save as PDF &nbsp;
@@ -186,6 +190,16 @@ export function RepaymentTable({
             )
           }
         </PDFDownloadLink>
+        <p
+          style={{
+            fontFamily: "Helvetica",
+            fontSize: "20px",
+            fontStyle: "italic",
+          }}
+        >
+          Not what you are looking for?
+        </p>
+        <CPFCalculatorButton />
       </div>
     </>
   );
