@@ -3,8 +3,8 @@ import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import CalculateIcon from "@mui/icons-material/Calculate";
 
-// Triggers calculation only if all input fields are filled & validated to be of correct format
-export function CPFCalculatorButton({ handleClickCalculate }) {
+// Links to CPF calculator if you do not like mine
+export function CPFCalculatorButton() {
   return (
     <Button variant="contained" color="success" size="large">
       <Link
