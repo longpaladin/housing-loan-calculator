@@ -8,7 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { ChartTable } from "./ChartTable";
 import { HousingLoanPDF } from "./HousingLoanPDF";
-import { PDFDownloadLink, Document, Page } from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import { Button } from "@mui/material";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import { CPFCalculatorButton } from "./CPFCalculatorButton";
@@ -47,7 +47,9 @@ export function RepaymentTable({
     loanAmount *
     ((monthlyInterest * monthlyCompoundingInterest) /
       (monthlyCompoundingInterest - 1));
-
+  if (isNaN(monthlyRepayment)) {
+    monthlyRepayment = loanAmount / (loanTenure * 12);
+  }
   let year = 2022;
   let currentMonthBalance = loanAmount;
   let finalArray = [];
@@ -92,14 +94,20 @@ export function RepaymentTable({
   return (
     <>
       <br></br>
-      <hr></hr>
-      <p style={{ fontFamily: "Helvetica", fontSize: "20px" }}>
-        Your estimated monthly repayment: &nbsp;
-        <span style={{ fontSize: "32px", fontWeight: "bold" }}>
-          SGD$ {parseInt(monthlyRepayment)}
-        </span>
-      </p>
-      <hr></hr>
+      <div
+        style={{
+          border: "10px solid #048c7f",
+          borderRadius: "20px",
+          margin: "0 40px",
+        }}
+      >
+        <p style={{ fontFamily: "Helvetica", fontSize: "20px" }}>
+          Your estimated monthly repayment: &nbsp;
+          <span style={{ fontSize: "32px", fontWeight: "bold" }}>
+            SGD$ {parseInt(monthlyRepayment)}
+          </span>
+        </p>
+      </div>
 
       <ChartTable
         yearOnlyArray={yearOnlyArray}

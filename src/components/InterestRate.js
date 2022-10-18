@@ -4,7 +4,6 @@ import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
-import { TextField } from "@mui/material";
 
 // Controls interest rate and error messages
 export function InterestRate({
@@ -31,23 +30,14 @@ export function InterestRate({
           endAdornment={<InputAdornment position="end">%</InputAdornment>}
           label="Interest Rate"
         />
-        {/* <InputLabel htmlFor="outlined-adornment-interestrate2">
-          Interest Rate
-        </InputLabel>
-        <TextField
-          id="outlined-adornment-interestrate2"
-          value={interestRate}
-          onChange={handleInterestChange}
-          InputProps={{endAdornment: <InputAdornment position="end">%</InputAdornment>,}}
-          label="Interest Rate"
-        /> */}
-        {!passRegexp && interestRate !== undefined && (
+
+        {!passRegexp && (
           <FormHelperText error>
             Interest rate can only be positive numbers and up to 2 decimal
             places
           </FormHelperText>
         )}
-        {calculateAttempt && interestRate === undefined && (
+        {calculateAttempt && interestRate === "" && (
           <FormHelperText error>
             Interest rate can only be positive numbers and up to 2 decimal
             places

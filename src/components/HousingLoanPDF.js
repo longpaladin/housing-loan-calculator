@@ -1,7 +1,6 @@
 import React from "react";
 import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
-import { ChartTable } from "./ChartTable";
-import { withTheme } from "@emotion/react";
+
 
 // Create styles
 const styles = StyleSheet.create({
@@ -100,7 +99,7 @@ export function HousingLoanPDF({
               <View key={index} style={styles.tablerow}>
                 {rowOfArray.map((cellOfArray, index) => {
                   return (
-                    <View style={styles.tablecell}>
+                    <View key={index} style={styles.tablecell}>
                       <Text
                         key={index}
                         align={"right"}

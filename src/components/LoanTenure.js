@@ -1,59 +1,40 @@
 import * as React from "react";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
-
-const MIN_LOAN_TENURE_YEARS = 1;
-const MAX_LOAN_TENURE_YEARS = 30;
+import Slider from "@mui/material/Slider";
 
 // Controls loan tenure and error messages
 export function LoanTenure({
   loanTenure,
   handleLoanTenureChange,
-  calculateAttempt,
 }) {
-  let regexp = /^[0-9]*$/;
-  let passRegexp = !regexp.test(loanTenure);
-
   return (
     <div>
       <FormControl
-        sx={{ m: 2, width: "90%", maxWidth: "500px" }}
+        sx={{ m: 2, width: "90%", maxWidth: "470px" }}
         variant="outlined"
       >
-        <InputLabel htmlFor="outlined-adornment-loantenure">
+        <p
+          style={{
+            margin: "0 0 10px 0",
+            fontFamily: "Helvetica",
+            fontSize: "12px",
+            textAlign: "left",
+            color: "rgba(0,0,0,0.6)"
+          }}
+        >
           Loan Tenure
-        </InputLabel>
-        <OutlinedInput
-          id="outlined-adornment-loantenure"
+        </p>
+        <Slider
+          defaultValue={30}
+          step={1}
+          min={1}
+          max={30}
+          aria-label="Default"
+          valueLabelDisplay="auto"
           value={loanTenure}
           onChange={handleLoanTenureChange}
-          endAdornment={<InputAdornment position="end">years</InputAdornment>}
-          label="Loan Tenure"
+          sx={{ color: "#006d5b", marginBottom: "10px" }}
         />
-        {passRegexp && loanTenure !== undefined && (
-          <FormHelperText error>
-            Loan tenure can only be whole numbers
-          </FormHelperText>
-        )}
-        {loanTenure !== undefined &&
-          (loanTenure < MIN_LOAN_TENURE_YEARS ||
-            loanTenure > MAX_LOAN_TENURE_YEARS) && (
-            <FormHelperText error>
-              Loan tenure can only be between 1 to 30 years
-            </FormHelperText>
-          )}
-        {calculateAttempt &&
-          (loanTenure < MIN_LOAN_TENURE_YEARS ||
-            loanTenure > MAX_LOAN_TENURE_YEARS ||
-            loanTenure === undefined) && (
-            <FormHelperText error>
-              Loan tenure can only be between 1 to 30 years
-            </FormHelperText>
-          )}
       </FormControl>
     </div>
   );

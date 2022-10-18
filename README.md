@@ -124,3 +124,37 @@ Reset (button):
 - add in comments on how the app works
 - Graph to visualise repayments over the years, using Chartjs library
 - Save PDF copy into computer using a button, using @react-pdf/renderer library
+
+## Gherkin Reference
+
+Feature: Input fields for housing loan calculator
+
+Scenario: Page just loaded
+WHEN page loads
+THEN default values fill loan amount, interest rate, loan tenure except property type
+
+Scenario: User press calculate
+WHEN user press calculate, and inputs are wrong or incomplete
+THEN respective error messages show per individual input (regex check || value not within range)(this means I can use slider, set min and max, to remove the need for error messages)
+
+Scenario: User press reset
+WHEN user press reset
+THEN loan amount, interest rate, loan tenure inputs goes back to default values
+
+Scenario: User typing wrong info || incorrect formatting in input field
+WHEN user type wrong info || incorrect format
+THEN respective error message appears immediately
+WHEN correct format
+THEN error message disappear immediately
+
+Scenario: User makes 1 change || any change in input field
+WHEN something is changed
+THEN repayment table and chart disappears
+
+Scenario: User clicks "Save as PDF"
+WHEN save as PDF button clicked
+THEN save as window pops out, type in filename and save, can open as PDF
+
+Scenario: User clicks "CPF calculator"
+WHEN CPF button clicked
+THEN new tab appears, CPF calculator webpage

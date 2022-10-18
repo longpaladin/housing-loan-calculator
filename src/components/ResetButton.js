@@ -6,7 +6,7 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 export function ResetButton({ resetAll }) {
   return (
     <Button variant="contained" color="error" size="large" onClick={resetAll}>
-      Reset &nbsp; <RestartAltIcon />
+      Reset &nbsp; <RestartAltIcon sx={{fontSize: "20px"}}/>
     </Button>
   );
 }

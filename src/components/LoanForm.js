@@ -1,38 +1,43 @@
 import * as React from "react";
+import { useState } from "react";
 import { CalculateButton } from "./CalculateButton";
 import { InterestRate } from "./InterestRate";
 import { LoanAmount } from "./LoanAmount";
 import { LoanTenure } from "./LoanTenure";
 import { PropertyType } from "./PropertyType";
 import { ResetButton } from "./ResetButton";
-import Stack from "@mui/material/Stack";
 import { RepaymentTable } from "./RepaymentTable";
-import { ChartTable } from "./ChartTable";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+
+const MAX_LOAN_AMOUNT = 99999999;
+const MIN_LOAN_AMOUNT = 100000;
 
 export function LoanForm() {
   // Set the states for different input fields
-  const [loanAmount, setLoanAmount] = React.useState();
-  const [interestRate, setInterestRate] = React.useState();
-  const [loanTenure, setLoanTenure] = React.useState();
-  const [property, setProperty] = React.useState();
+  const [loanAmount, setLoanAmount] = useState(500000);
+  const [interestRate, setInterestRate] = useState(2.6);
+  const [loanTenure, setLoanTenure] = useState(30);
+  const [property, setProperty] = useState("");
 
   // Validator when you click the calculate button
-  const [validateLoanAmount, setValidateLoanAmount] = React.useState(false);
-  const [validateInterestRate, setValidateInterestRate] = React.useState(false);
-  const [validateLoanTenure, setValidateLoanTenure] = React.useState(false);
-  const [validateProperty, setValidateProperty] = React.useState(false);
-  const [validateAll, setValidateAll] = React.useState(false);
-  const [calculateAttempt, setCalculateAttempt] = React.useState(false);
+  const [validateLoanAmount, setValidateLoanAmount] = useState(true);
+  const [validateInterestRate, setValidateInterestRate] = useState(true);
+  // const [validateLoanTenure, setValidateLoanTenure] = useState(false);
+  const [validateProperty, setValidateProperty] = useState(false);
+  const [validateAll, setValidateAll] = useState(false);
+  const [calculateAttempt, setCalculateAttempt] = useState(false);
 
   // Update whenever property is changed
   const handlePropertyChange = (event) => {
     setCalculateAttempt(false);
     setProperty(event.target.value);
-
-    setValidateProperty(true);
+    if (event.target.value === "HDB" || event.target.value === "Private Property") {
+      setValidateProperty(true);
+    } else {
+      setValidateProperty(false);
+    }
+    
   };
 
   // Update whenever loan amount field is changed
@@ -41,8 +46,12 @@ export function LoanForm() {
     setLoanAmount(event.target.value);
 
     let regexp = /^[0-9]*$/;
-    let passRegexp = regexp.test(loanAmount);
-    if (loanAmount < 100000000 && loanAmount >= 100000 && passRegexp) {
+    let passRegexp = regexp.test(event.target.value);
+    if (
+      event.target.value <= MAX_LOAN_AMOUNT &&
+      event.target.value >= MIN_LOAN_AMOUNT &&
+      passRegexp
+    ) {
       setValidateLoanAmount(true);
     } else {
       setValidateLoanAmount(false);
@@ -55,8 +64,8 @@ export function LoanForm() {
     setInterestRate(event.target.value);
 
     let regexp = /^\+?[0-9]*(\.[0-9]{0,2})?$/;
-    let passRegexp = regexp.test(interestRate);
-    if (passRegexp && interestRate !== undefined) {
+    let passRegexp = regexp.test(event.target.value);
+    if (passRegexp && event.target.value !== "") {
       setValidateInterestRate(true);
     } else {
       setValidateInterestRate(false);
@@ -67,32 +76,23 @@ export function LoanForm() {
   const handleLoanTenureChange = (event) => {
     setCalculateAttempt(false);
     setLoanTenure(event.target.value);
-
-    let regexp = /^[0-9]*$/;
-    let passRegexp = !regexp.test(loanTenure);
-    if (
-      passRegexp &&
-      loanTenure !== undefined &&
-      (loanTenure < 1 || loanTenure > 30)
-    ) {
-      setValidateLoanTenure(true);
-    } else {
-      setValidateLoanTenure(false);
-    }
   };
 
   // When reset button is clicked
   const resetAll = () => {
-    setLoanAmount(0);
-    setInterestRate(0);
-    setLoanTenure(0);
+    setLoanAmount(500000);
+    setValidateLoanAmount(true);
+    setInterestRate(2.6);
+    setValidateInterestRate(true);
+    setLoanTenure(30);
     setCalculateAttempt(false);
   };
 
   // When calculate button is clicked
   const handleClickCalculate = () => {
     setCalculateAttempt(true);
-    if (property && loanAmount && interestRate && loanTenure) {
+
+    if (validateProperty && validateLoanAmount && validateInterestRate) {
       setValidateAll(true);
     } else {
       setValidateAll(false);
@@ -125,9 +125,8 @@ export function LoanForm() {
       <LoanTenure
         handleLoanTenureChange={handleLoanTenureChange}
         loanTenure={loanTenure}
-        calculateAttempt={calculateAttempt}
       />
-      
+
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item lg={2} md={1}></Grid>
@@ -146,15 +145,13 @@ export function LoanForm() {
         </h4>
       )}
 
-      {validateAll && calculateAttempt ? (
+      {validateAll && calculateAttempt && (
         <RepaymentTable
           property={property}
           loanAmount={loanAmount}
           interestRate={interestRate}
           loanTenure={loanTenure}
         />
-      ) : (
-        <></>
       )}
     </form>
   );

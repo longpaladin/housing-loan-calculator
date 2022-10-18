@@ -10,32 +10,27 @@ import FormHelperText from "@mui/material/FormHelperText";
 export function PropertyType({
   handlePropertyChange,
   property,
-  validateProperty,
   calculateAttempt,
 }) {
   return (
-    
-      <FormControl sx={{ m: 2, width: "90%", maxWidth: "500px" }}>
-        <InputLabel id="property-type">Property Type</InputLabel>
-        <Select
-          labelId="property-type"
-          id="property-type"
-          value={property}
-          label="Property Type"
-          onChange={handlePropertyChange}
-        >
-          <MenuItem value={"HDB"}>HDB</MenuItem>
-          <MenuItem value={"Private Property"}>Private Property</MenuItem>
-        </Select>
-        {!validateProperty && property !== undefined && (
+    <FormControl sx={{ m: 2, width: "90%", maxWidth: "500px" }}>
+      <InputLabel id="property-type">Property Type</InputLabel>
+      <Select
+        labelId="property-type"
+        id="property-type"
+        value={property}
+        label="Property Type"
+        onChange={handlePropertyChange}
+      >
+        <MenuItem value={"HDB"}>HDB</MenuItem>
+        <MenuItem value={"Private Property"}>Private Property</MenuItem>
+      </Select>
+
+      {calculateAttempt &&
+        property !== "HDB" &&
+        property !== "Private Property" && (
           <FormHelperText error>Choose your property type</FormHelperText>
         )}
-        {calculateAttempt &&
-          property !== "HDB" &&
-          property !== "Private Property" && (
-            <FormHelperText error>Choose your property type</FormHelperText>
-          )}
-      </FormControl>
-    
+    </FormControl>
   );
 }

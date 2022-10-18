@@ -35,18 +35,19 @@ export function LoanAmount({
           }
           label="Loan Amount"
         />
-        {!passRegexp && loanAmount !== undefined && (
+        {!passRegexp && loanAmount !== "" && (
           <FormHelperText error>
             Numbers only, no alphabets or special characters
           </FormHelperText>
         )}
-        {(loanAmount < MIN_LOAN_AMOUNT || loanAmount > MAX_LOAN_AMOUNT) && (
-          <FormHelperText error>
-            Input loan amount between $100,000 and $99,999,999
-          </FormHelperText>
-        )}
+        {!calculateAttempt &&
+          (loanAmount < MIN_LOAN_AMOUNT || loanAmount > MAX_LOAN_AMOUNT) && (
+            <FormHelperText error>
+              Out of range. Input loan amount between $100,000 and $99,999,999
+            </FormHelperText>
+          )}
         {calculateAttempt &&
-          (loanAmount === undefined ||
+          (loanAmount === "" ||
             loanAmount < MIN_LOAN_AMOUNT ||
             loanAmount > MAX_LOAN_AMOUNT) && (
             <FormHelperText error>
