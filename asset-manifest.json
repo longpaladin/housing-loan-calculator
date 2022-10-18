@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/housing-loan-calculator/static/css/main.4df8a58c.css",
+    "main.js": "/housing-loan-calculator/static/js/main.2ca5bcae.js",
+    "static/js/787.2bd558f1.chunk.js": "/housing-loan-calculator/static/js/787.2bd558f1.chunk.js",
+    "index.html": "/housing-loan-calculator/index.html",
+    "main.4df8a58c.css.map": "/housing-loan-calculator/static/css/main.4df8a58c.css.map",
+    "main.2ca5bcae.js.map": "/housing-loan-calculator/static/js/main.2ca5bcae.js.map",
+    "787.2bd558f1.chunk.js.map": "/housing-loan-calculator/static/js/787.2bd558f1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4df8a58c.css",
+    "static/js/main.2ca5bcae.js"
+  ]
+}
