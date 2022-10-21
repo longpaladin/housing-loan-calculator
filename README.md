@@ -100,9 +100,8 @@ Loan Tenure (slider):
 
 Calculate (button):
 
-- disabled when input fields are not completely filled - not done yet? should I do?
-- enabled when all input fields are completely filled - error messages? or disable button?
-- generates a table of yearly repayment based on inputs, immediate update if there are changes
+- calculates when all input fields are completely filled
+- generates a chart & a table of yearly repayment based on inputs, immediate disappears if there are changes
 - separates principal & interest repayments, able to view yearly leftovers
 
 Reset (button):
@@ -135,6 +134,10 @@ THEN default values fill loan amount, interest rate, loan tenure except property
 Scenario: User press calculate
 WHEN user press calculate, and inputs are wrong or incomplete
 THEN respective error messages show per individual input (regex check || value not within range)(this means I can use slider, set min and max, to remove the need for error messages)
+
+Scenario: User press calculate
+WHEN user press calculate, and inputs are correct and complete
+THEN chart and repayment table appears
 
 Scenario: User press reset
 WHEN user press reset
