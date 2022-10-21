@@ -69,6 +69,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+## User story
+
+- Due to inflation, Singaporeans property owners want a easy-to-use calculator to find the sweet spot balancing between lowering interest repayments and lowering loan tenure for their housing loan, according to what they can afford to pay.
+
 ## Completed Base features:
 
 Property type (dropdown list):
@@ -89,11 +93,10 @@ Interest rate (input field):
 - up to 2 decimal places
 - regex present to validate input, else error message will show
 
-Loan Tenure (input field):
+Loan Tenure (slider):
 
 - minimum of 1 year
 - maximum of 30 years
-- regex present to validate input, else error message will show
 
 Calculate (button):
 
@@ -104,11 +107,7 @@ Calculate (button):
 
 Reset (button):
 
-- clears all the input fields to 0 or nothing
-
-## Bugs present
-
-- During first load, if press reset, input field words overlap with number 0 in "interest rate & loan tenure"
+- clears all the input fields to default current HDB values
 
 ## Possible fine-tuning to dos:
 
